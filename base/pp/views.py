@@ -14,7 +14,7 @@ def page_pp(request: HttpRequest):
         form = AddVisitRecordForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('page_pp')
+            return redirect('page_congratulations')
     else:
         form = AddVisitRecordForm()
         pp = PrivacyPolicy.objects.all()

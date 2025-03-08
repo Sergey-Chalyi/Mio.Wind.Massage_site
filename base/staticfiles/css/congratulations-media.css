@@ -1,0 +1,20 @@
+@media (max-width: 850px) {
+    .main .block {
+        width: 680px;
+    }
+}
+
+@media (max-width: 720px) {
+    .main .block {
+        width: 327px;
+    }
+
+    .main .block .description {
+        width: 320px;
+    }
+
+    .main .block .congratulations-link {
+        width: 220px;
+        height: 35px;
+    }
+}

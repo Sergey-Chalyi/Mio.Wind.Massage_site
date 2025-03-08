@@ -13,7 +13,7 @@ def page_subscriptions_and_sertificates(request: HttpRequest):
         form = AddVisitRecordForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('page_subscriptions_and_sertificates')
+            return redirect('page_congratulations')
     else:
         form = AddVisitRecordForm()
 

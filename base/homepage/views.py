@@ -18,7 +18,7 @@ def homepage(request: HttpRequest):
         form = AddVisitRecordForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('homepage')
+            return redirect('page_congratulations')
     else:
         form = AddVisitRecordForm()
     
@@ -84,7 +84,7 @@ def congratulations(request: HttpRequest):
         form = AddVisitRecordForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('homepage')
+            return redirect('page_congratulations')
     else:
         form = AddVisitRecordForm()
 

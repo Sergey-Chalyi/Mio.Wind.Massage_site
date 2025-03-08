@@ -16,7 +16,7 @@ def page_employees(request: HttpRequest):
         form = AddVisitRecordForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('page_employees')
+            return redirect('page_congratulations')
     else:
         form = AddVisitRecordForm()
 
@@ -56,7 +56,7 @@ def page_certain_employee(request: HttpRequest, employee_slug: str):
         form = AddVisitRecordForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('page_employees')
+            return redirect('page_congratulations')
     else:
         employee = get_object_or_404(Employee, slug=employee_slug)
         form = AddVisitRecordForm(initial={'to_specialist': employee.first_name})

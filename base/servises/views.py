@@ -10,7 +10,7 @@ def page_servises(request: HttpRequest):
         form = AddVisitRecordForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('page_servises')
+            return redirect('page_congratulations')
     else:
         form = AddVisitRecordForm()
 
