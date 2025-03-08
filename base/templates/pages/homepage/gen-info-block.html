@@ -1,7 +1,7 @@
 {% load static %}
 
 
-<section class='gen-info' itemscope itemtype="https://schema.org/Organization">
+<!-- <section class='gen-info' itemscope itemtype="https://schema.org/Organization">
     {% for info in gen_info_block %}
         <div class="info-block" itemprop="department" itemscope itemtype="https://schema.org/Organization">
             <div class="icon">
@@ -17,4 +17,51 @@
             </div>
         </div>
     {% endfor %}
+</section> -->
+
+<section class='gen-info' itemscope itemtype="https://schema.org/Organization">
+    <div class="info-block" itemprop="department" itemscope itemtype="https://schema.org/Organization">
+        <div class="icon">
+            <img src="{{ gen_info_block.0.icon.url }}" alt="" itemprop="logo">
+        </div>
+        <div class="text">
+            <div class="title" itemprop="name">
+                {{ gen_info_block.0.title }}
+            </div>
+            <div class="description" itemprop="description">
+                {{ gen_info_block.0.text }}
+            </div>
+        </div>
+    </div>
+
+    <div class="info-block" itemprop="department" itemscope itemtype="https://schema.org/Organization">
+        <div class="icon">
+            <img src="{{ gen_info_block.1.icon.url }}" alt="" itemprop="logo">
+        </div>
+        <div class="text">
+            <div class="title" itemprop="name">
+                {{ gen_info_block.1.title }}
+            </div>
+            <div class="description" itemprop="description">
+                {{ gen_info_block.1.text }}
+            </div>
+        </div>
+    </div>
+
+    <div class="info-block" itemprop="department" itemscope itemtype="https://schema.org/Organization">
+        <div class="icon">
+            <img src="{{ gen_info_block.2.icon.url }}" alt="" itemprop="logo">
+        </div>
+        <div class="text">
+            <div class="title" itemprop="name">
+                {{ gen_info_block.2.title }}
+            </div>
+            <div class="description" itemprop="description">
+                <a href="tel:{{ gen_info_block.2.text|cut:' '|cut:'('|cut:')'|cut:'-' }}">
+                    {{ gen_info_block.2.text }}
+                </a>
+            </div>
+        </div>
+    </div>
 </section>
+

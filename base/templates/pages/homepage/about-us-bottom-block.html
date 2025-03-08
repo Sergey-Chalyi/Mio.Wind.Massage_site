@@ -17,7 +17,11 @@
                 </div>
                 <div class='clarifications'>
                     <div class='title' itemprop="name">{{ gen_info_block.2.title }}</div>
-                    <div class='body' itemprop="description">{{ gen_info_block.2.text }}</div>
+                    <div class='body' itemprop="description">
+                        <a href="tel:{{ gen_info_block.2.text|cut:' '|cut:'('|cut:')'|cut:'-' }}">
+                            {{ gen_info_block.2.text }}
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

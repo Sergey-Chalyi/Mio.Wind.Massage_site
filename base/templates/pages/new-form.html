@@ -63,13 +63,25 @@
                                 <img src="{% static "img/icons/phone-dark.svg" %}" alt="phone-icon">
                                 {% endif %}
                                 
-                                <div class='text'>+38 (068) 348-81-03</div>
+                                <!-- <div class='text'>+38 (068) 348-81-03</div> -->
+                                <div class='text'>
+                                    <a href="tel:{{ gen_info_block.2.text|cut:' '|cut:'('|cut:')'|cut:'-' }}" style="
+                                        {% if form_type == 'homepage' %}
+                                            color: white;
+                                        {% elif form_type == 'new-window' or form_type == 'employee' %}
+                                            color: #284159;
+                                        {% endif %}
+                                    ">
+                                        {{ gen_info_block.2.text }}
+                                    </a>
+                                </div>
+
                             </div>
                             <div class='item'>
                                 {% if form_type == "homepage" %}
-                                <img src="{% static "img/icons/clock-white.svg" %}" alt="phone-icon">
+                                <img src="{% static "img/icons/clock-white.svg" %}" alt="clock-icon">
                                 {% else %}
-                                <img src="{% static "img/icons/clock-dark.svg" %}" alt="phone-icon">
+                                <img src="{% static "img/icons/clock-dark.svg" %}" alt="clock-icon">
                                 {% endif %}
                                 <div class='text'>з 8:00 до 22:00</div>
                             </div>

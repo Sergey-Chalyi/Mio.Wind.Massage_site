@@ -26,7 +26,13 @@
         <div class='contacts'>
             <div class='item'>
                 <img src="{% static 'img/icons/phone-dark.svg' %}" alt="">
-                <div itemprop="telephone">{{ gen_info_block.2.text }}</div>
+                <!-- <div itemprop="telephone">{{ gen_info_block.2.text }}</div> -->
+                <div itemprop="telephone">
+                    <a href="tel:+{{ gen_info_block.2.text|cut:' '|cut:'('|cut:')'|cut:'-' }}" 
+                       style="font-family: 'Open Sans'; font-size: 14px;">
+                        {{ gen_info_block.2.text }}
+                    </a>
+                </div>                            
             </div>
             <div class='item'>
                 <img src="{% static 'img/icons/clock-dark.svg' %}" alt="">
