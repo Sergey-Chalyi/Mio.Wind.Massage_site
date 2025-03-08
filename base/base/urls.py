@@ -39,6 +39,8 @@ urlpatterns = [
     path("map/", map.views.page_map, name='page_map'),
     path("privacy-policy/", pp.views.page_pp, name='page_pp'),
 
+    path('congratulations-page/', homepage.views.congratulations, name='page_congratulations')
+
 ] 
 
 

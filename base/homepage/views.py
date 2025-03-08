@@ -48,8 +48,6 @@ def homepage(request: HttpRequest):
     questions = FAQ.objects.all()
 
 
-
-
     data = {
         'logo' : logo,
         'socials' : socials,
@@ -79,3 +77,36 @@ def homepage(request: HttpRequest):
     }
 
     return render(request, 'pages/homepage/page-home.html', data)
+
+
+def congratulations(request: HttpRequest):
+    if request.method == 'POST':
+        form = AddVisitRecordForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('homepage')
+    else:
+        form = AddVisitRecordForm()
+
+    logo = Logo.objects.all()
+    socials = CompanySocials.objects.all()
+    altegio_social = socials.filter(title__iexact="altegio").first()
+    gen_info_block = GenInfoBlock.objects.all()
+
+    
+    
+    rights = FooterBlock.objects.all()
+
+
+    data = {
+        'logo' : logo,
+        'socials' : socials,
+        'altegio_social' : altegio_social,
+        'gen_info_block' : gen_info_block,
+
+        'rights' : rights,
+
+        'form' : form
+    }
+
+    return render(request, 'pages/congratulations.html', data)
