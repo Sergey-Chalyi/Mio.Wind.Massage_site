@@ -43,7 +43,10 @@
                 {{ gen_info_block.1.title }}
             </div>
             <div class="description" itemprop="description">
-                {{ gen_info_block.1.text }}
+                <!-- {{ gen_info_block.1.text }} -->
+                <a href="https://www.google.com/maps/search/?q={{ gen_info_block.1.text|urlencode }}">
+                    {{ gen_info_block.1.text }}
+                </a>
             </div>
         </div>
     </div>

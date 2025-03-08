@@ -13,7 +13,11 @@
                 </div>
                 <div class='clarifications'>
                     <div class='title' itemprop="name">{{ gen_info_block.1.title }}</div>
-                    <div class='body' itemprop="description">{{ gen_info_block.1.text }}</div>
+                    <div class='body' itemprop="description">
+                        <a href="https://www.google.com/maps/search/?q={{ gen_info_block.1.text|urlencode }}">
+                            {{ gen_info_block.1.text }}
+                        </a>
+                    </div>
                 </div>
                 <div class='clarifications'>
                     <div class='title' itemprop="name">{{ gen_info_block.2.title }}</div>
