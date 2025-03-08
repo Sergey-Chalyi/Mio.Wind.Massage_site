@@ -1,0 +1,86 @@
+{% load static %}
+{% load extra_filters %}
+
+
+<!DOCTYPE html>
+<html lang="uk" itemscope itemtype="http://schema.org/HTML">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дорожня карта</title>
+
+    <link type="image/x-icon" href="{{ logo.0.icon_flavic.url }}" rel="shortcut icon">
+    <link type="Image/x-icon" href="{{ logo.0.icon_flavic.url }}" rel="icon">
+
+    <link type='text/css' rel="stylesheet" href="{% static 'css/homepage.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/homepage-media.css' %}">
+
+    <link type='text/css' rel="stylesheet" href="{% static 'css/welcome-block.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/welcome-block-media.css' %}">
+
+    <link type='text/css' rel="stylesheet" href="{% static 'css/title-and-nav.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/title-and-nav-media.css' %}">
+
+    <link type='text/css' rel="stylesheet" href="{% static 'css/map.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/map-media.css' %}">
+
+    <link type='text/css' rel="stylesheet" href="{% static 'css/footer-wave.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/footer-wave-media.css' %}">
+
+    <link type='text/css' rel="stylesheet" href="{% static 'css/new-form.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/new-form-media.css' %}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.cdnfonts.com/css/atten-new" rel="stylesheet">
+                
+</head>
+<body itemscope itemtype="http://schema.org/WebPage">
+
+    {% include "pages/header.html" %}
+
+    <main class='main' itemprop="mainContentOfPage">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TKHNSMHK"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+
+        {% include "pages/welcome-block.html" with welcome_message=page_photo.title welcome_image=page_photo.photo.url %}
+
+        {% include "pages/nav-and-title.html" with current_page_name="Дорожня карта" current_page_url_name="page_map" title='Дорожня карта' %}
+
+        <section class='map' itemscope itemtype="http://schema.org/Place">
+            <div class='text'>
+                <div class='info' itemprop="description">
+                    Як абонементи впливають на ваше відновлення?
+                </div>
+            </div>
+            
+            <img class='max' src="{{ maps.3.photo.url }}" alt="{{ maps.0.title }}" itemprop="image">
+            <img class='middle' src="{{ maps.4.photo.url }}" alt="{{ maps.0.title }}" itemprop="image">
+            <img class='min' src="{{ maps.5.photo.url }}" alt="{{ maps.0.title }}" itemprop="image">
+
+            <button class='go-to-more'>
+                <a href="{% url 'page_subscriptions_and_sertificates' %}" itemprop="url"><div>Придбати абонементи  та сертифікати</div></a>
+            </button>
+
+            <div class='buttom-text'>
+                <div itemprop="text">
+                    <span>Абонементи</span> — це більше, ніж масаж, це системний 
+                    підхід до вашого здоров'я та якісного самопочуття!
+                </div>
+            </div>
+        </section>
+
+        <section id="window-form" itemscope itemtype="http://schema.org/Form">
+            {% include "pages/new-form.html" with form_type="window"%}
+        </section>
+    </main>
+    
+    {% include "pages/footer-wave.html" %} 
+
+    <script src="{% static 'js/window-form.js' %}"></script>
+</body>
+</html>

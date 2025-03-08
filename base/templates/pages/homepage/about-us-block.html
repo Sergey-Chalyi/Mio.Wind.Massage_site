@@ -1,0 +1,16 @@
+{% load static %}
+
+
+<section class="about-us" itemscope itemtype="https://schema.org/AboutPage">
+    <div class="info">
+        <div class="description" itemprop="description">
+            {{ about_as_block.0.text|safe }}
+        </div>
+    </div>
+    <div class="wave-img">
+        <img src="{{ about_as_block.0.photo_full.url }}" alt="wave-about-pc" itemprop="image">
+    </div>
+    <div class="wave-img-phone">
+        <img src="{{ about_as_block.0.photo_short.url }}" alt="wave-about-phone" itemprop="image">
+    </div>
+</section>

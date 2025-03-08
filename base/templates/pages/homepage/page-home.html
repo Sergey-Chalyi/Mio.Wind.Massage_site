@@ -1,0 +1,141 @@
+{% load static %}
+{% load extra_filters %}
+
+
+<!DOCTYPE html>
+<html lang="uk" itemscope itemtype="http://schema.org/WebPage">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Головна</title>
+
+    <link type="image/x-icon" href="{{ logo.0.icon_flavic.url }}" rel="shortcut icon">
+    <link type="Image/x-icon" href="{{ logo.0.icon_flavic.url }}" rel="icon">
+
+    <link type='text/css' rel="stylesheet" href="{% static 'css/homepage.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/homepage-media.css' %}">
+
+    <link type='text/css' rel="stylesheet" href="{% static 'css/new-form.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/new-form-media.css' %}">
+
+    {% comment %} FORM {% endcomment %}
+    <link type='text/css' rel="stylesheet" href="{% static 'css/new-form.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/new-form-media.css' %}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.cdnfonts.com/css/atten-new" rel="stylesheet">
+</head>
+<body>
+    {% include "pages/header.html" %}
+
+    <main class='main' itemscope itemtype="http://schema.org/MainContentOfPage">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TKHNSMHK"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        
+        {% include "pages/homepage/welcome-block.html" %}
+
+        {% include "pages/homepage/gen-info-block.html" %}
+
+        {% include "pages/homepage/about-us-block.html" %}
+
+        {% include "pages/homepage/advantages-block.html" %}
+
+        <section class="services" itemscope itemtype="http://schema.org/Service">
+            <div class="title">
+                <h2 itemprop="name">Послуги</h2>
+            </div>
+
+            {% include "pages/servises/servises-cards.html" %}
+
+            <a href="{% url 'page_servises' %}">
+                <button class='button-to-all'>
+                    <div itemprop="url">Перейти до всіх послуг</div>
+                </button>
+            </a>
+        </section>
+
+        <section class='specialists' itemscope itemtype="http://schema.org/Person">
+            <div class='description'>
+                <h2 class='title' itemprop="name">Наші спеціалісти</h2>
+                <div class="details" itemprop="description">{{ employees_page_info.0.text }}</div>
+            </div>
+
+            {% include "pages/employees/employees-cards.html" %}
+
+            <div class="go-to-button">
+                <a href="{% url 'page_employees' %}">
+                    <button>
+                        <div>
+                            Переглянути всіх спеціалістів
+                        </div>
+                    </button>
+                </a>
+            </div>
+        </section>
+
+        {% include "pages/homepage/benefits-block.html" %}
+
+        <section class='abonements' itemscope itemtype="http://schema.org/Offer">
+            <img class='background-normal' src="{{ subscription_page_info.1.photo.url }}" alt="{{ subscription_page_info.1.title }}" itemprop="image">
+            <div class='body'>
+                <div class='name'>
+                    <h3 itemprop="name">Абонементи</h3>
+                    <div class='details' itemprop="description">{{ subscription_page_info.0.text }}</div>
+                </div>
+
+                {% include "pages/sertificates-and-subscriptions/subscriptions-block.html" %}
+            </div>
+        </section>
+
+        <section class='map'>
+            <div class='text'>
+                <h3 class='title'>Абонементи — це ваша <span style='color: #165AD4'>Дорожня карта</span> здоров’я до відмінного самопочуття!</h3>
+                <div class='info'>Як абонементи впливають на ваше відновлення? </div>
+            </div>
+
+            <img class='max' src="{{ maps.0.photo.url }}" alt="{{ maps.0.title }}">
+            <img class='middle' src="{{ maps.1.photo.url }}" alt="{{ maps.0.title }}">
+            <img class='min' src="{{ maps.2.photo.url }}" alt="{{ maps.0.title }}">
+
+            <button class='go-to-more'>
+                <a href="{% url 'page_map' %}"><div>Дізнатися про карту здоров’я</div></a>
+            </button>
+        </section>
+
+        <section class='sertificates' itemscope itemtype="http://schema.org/OfferCatalog">
+            <img class='background' src="{{ sertificates_page_info.0.background.url }}" alt="wave-blue">
+
+            <div class='body'>
+                {% include "pages/sertificates-and-subscriptions/sertificates-block.html" %}
+            </div>
+        </section>
+
+        {% include "pages/homepage/feedback-block.html" %}
+
+        {% include "pages/homepage/about-us-bottom-block.html" %}
+
+        {% include "pages/homepage/faq-block.html" %}
+
+        <section id="appointment-form">
+            {% include "pages/new-form.html" with form_type="homepage"%}
+        </section>
+
+        <section id="window-form">
+            {% include "pages/new-form.html" with form_type="window"%}
+        </section>
+    </main>
+
+    {% include "pages/footer.html" %}
+
+    <script src="{% static 'js/homepage.js' %}"></script>
+    <script src="{% static 'js/faq.js' %}"></script>
+    <script src="{% static 'js/window-form.js' %}"></script>
+    <script src="{% static 'js/servise-card-radiobutton.js' %}"></script>
+</body>
+</html>
+

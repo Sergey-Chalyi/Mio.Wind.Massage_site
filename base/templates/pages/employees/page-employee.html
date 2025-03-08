@@ -1,0 +1,190 @@
+{% load static %}
+{% load extra_filters %}
+
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спеціалісти</title>
+
+    {% comment %} FOR FLAVIC ICON  {% endcomment %}
+    <link type="image/x-icon" href="{{ logo.0.icon_flavic.url }}" rel="shortcut icon">
+    <link type="Image/x-icon" href="{{ logo.0.icon_flavic.url }}" rel="icon">
+
+    {% comment %} BASE STYLES {% endcomment %}
+    <link type='text/css' rel="stylesheet" href="{% static 'css/homepage.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/homepage-media.css' %}">
+
+    {% comment %} WELCOME BLOCK {% endcomment %}
+    <link type='text/css' rel="stylesheet" href="{% static 'css/welcome-block.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/welcome-block-media.css' %}">
+
+    {% comment %} FORM {% endcomment %}
+    <link type='text/css' rel="stylesheet" href="{% static 'css/new-form.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/new-form-media.css' %}">
+
+    {% comment %} FONTS {% endcomment %}
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/atten-new" rel="stylesheet">
+
+    {% comment %} TITLE AND NAV {% endcomment %}
+    <link type='text/css' rel="stylesheet" href="{% static 'css/title-and-nav.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/title-and-nav-media.css' %}">
+
+    {% comment %} EMPLOYEE {% endcomment %}
+    <link type='text/css' rel="stylesheet" href="{% static 'css/employee.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/employee-media.css' %}">
+
+    {% comment %} FORM {% endcomment %}
+    <link type='text/css' rel="stylesheet" href="{% static 'css/new-form.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/new-form-media.css' %}">
+
+</head>
+<body>
+    {% include "pages/header.html" %}
+
+    <main class='main'>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TKHNSMHK"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        
+        {% include "pages/welcome-block.html" with welcome_message=page_photo.title welcome_image=page_photo.photo.url %}
+
+        <section class='title-and-nav' itemscope itemtype="http://schema.org/WebPage">
+            <div class='links'>
+                <a href="{% url 'homepage' %}" itemprop="url" itemtype="http://schema.org/Organization">MIO.WIND.MASSAGE</a>
+                <img src="{% static 'img/icons/arrow.svg' %}" alt="">
+                <a href="{% url 'page_employees' %}" itemprop="url">Спеціалісти</a>
+                <img src="{% static 'img/icons/arrow.svg' %}" alt="">
+                <a href="" itemprop="name">{{ employee.first_name }}</a>
+            </div>
+            
+            <h2 itemprop="headline">{{ employee.first_name }}&nbsp;&nbsp;&nbsp;<span>{{ employee.specialization_short }}</span></h2>
+        </section>
+
+        <section class='first-info'>
+            <img class='photo' src="{{ employee.main_photo.url }}" alt="photo" itemprop="image">
+        
+            <div class='items'>
+                <div class='item'>
+                    <div class='big-title' itemprop="jobTitle">{{ employee.specialization_detailed }}</div>
+                    <div class='feedback'>
+                        <div class='stars'>
+                            {% for i in employee.stars_count|range_filter  %}
+                                <img class='star' src="{% static 'img/icons/star-light.svg' %}" alt="star">
+                            {% endfor %}
+                            {% for i in  employee.stars_count|range_filter_for_dark_stars  %}
+                                <img class='star' src="{% static 'img/icons/star-dark.svg' %}" alt="star">
+                            {% endfor %}
+                        </div>
+                        <div class='count'>
+                            {% if employee.altedgio_reviews_url is null %}
+                                <a href="">{{ employee.feedbacks_count }}</a>
+                            {% else %}
+                                <a href="{{ employee.altedgio_reviews_url }}">{{ employee.feedbacks_count }}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class='item'>
+                    <div class='title'>Стаж роботи, років:</div>
+                    <div class='info' itemprop="yearsExperience">{{ employee.work_experience|floatformat:0 }}</div>
+                </div>
+                <div class='item'>
+                    <div class='title'>Освіта:</div>
+                    <div class='info' itemprop="alumniOf">{{ employee.education }}</div>
+                </div>
+                <div class='item'>
+                    <div class='title'>Соціальні мережі:</div>
+                    <div class='socials'>
+                        {% if employee.telegram_url %}
+                            <a href="{{ employee.telegram_url }}" target="_blank" itemprop="sameAs">
+                                <img src="{% static 'img/icons/socials/tg-dark.svg' %}" alt="Telegram">
+                            </a>
+                        {% endif %}
+                        {% if employee.instagram_url %}
+                            <a href="{{ employee.instagram_url }}" target="_blank" itemprop="sameAs">
+                                <img src="{% static 'img/icons/socials/inst-dark.svg' %}" alt="Instagram">
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class='item'>
+                    <div class='buttons'>
+                        <button class='order-button' style='
+                            background-color: #165AD4;
+                            border-radius: 10px;
+                            cursor: pointer;
+                            color: white'>
+                            <div>Записатися</div>
+                        </button>
+
+                        {% if employee.altedgio_reviews_url is null %}
+                            <a href=""><button class='b2'><div>Відгуки</div></button></a>
+                        {% else %}
+                            <a href="{{ employee.altedgio_reviews_url }}"><button class='b2'><div>Відгуки</div></button></a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class='second-info'>
+            <h4>Інформація про спеціаліста</h4>
+            <div class='body'>
+                <div class='info'>
+                    <div class='item'>
+                        <div class='title'>Наукова діяльність:</div>
+                        <div class='description'>
+                            <ul itemprop="worksFor">
+                                {% for activity in employee.scientific_activity %}
+                                    <li>{{ activity }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class='item'>
+                        <div class='title'>Послуги які надає спеціаліст:</div>
+                        <div class='description'>
+                            <ul>
+                                {% for servise in employee.services.all %}
+                                    <li>{{ servise.title }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div> 
+                    <div class='item'>
+                        <div class='title'>Хобі, улюблені фільми, книги:</div>
+                        <div class='description' itemprop="additionalType">
+                            {{ employee.hobbies_and_interests }}
+                        </div>
+                    </div> 
+                    <div class='item'>
+                        <div class='title'>Поради від лікаря:</div>
+                        <div class='description'>
+                            {{ employee.doctor_advice }}
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </section>
+
+        <section id="appointment-form">
+            {% include "pages/new-form.html" with form_type="employee" employee_name=employee.first_name%}
+        </section>
+
+        <section id="window-form">
+            {% include "pages/new-form.html" with form_type="window"%}
+        </section>
+    </main>
+
+    {% include "pages/footer.html" %} 
+
+    <script src="{% static 'js/window-form.js' %}"></script>
+</body>
+</html>

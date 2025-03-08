@@ -1,0 +1,70 @@
+{% load static %}
+
+<header class='header' itemscope itemtype="https://schema.org/WPHeader">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TKHNSMHK');</script>
+    <!-- End Google Tag Manager -->
+    
+    <a href="{% url 'homepage' %}" class="logo-block" itemprop="url">
+        <img class='logo-img' src="{{ logo.0.icon_main.url }}" alt="Logo" itemprop="logo">
+        <div class='logo-text' itemprop="name">{{ logo.0.text }}</div>
+    </a>
+
+    <input type="checkbox" name='menu' id='menu'>
+    <label for="menu"><img src="{% static 'img/icons/burger-menu.svg' %}" alt="" style="padding-right: 10px;"></label>
+
+    <nav class="nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <a href="{% url 'page_servises' %}" itemprop="url">Послуги</a>
+        <a href="{% url 'page_employees' %}" itemprop="url">Спеціалісти</a>
+        <a href="{% url 'page_subscriptions_and_sertificates' %}" itemprop="url">Абонементи та сертифікати</a>
+        <a href="{% url 'page_map' %}" itemprop="url">Дорожня карта</a>
+
+        <div class='contacts'>
+            <div class='item'>
+                <img src="{% static 'img/icons/phone-dark.svg' %}" alt="">
+                <div itemprop="telephone">{{ gen_info_block.2.text }}</div>
+            </div>
+            <div class='item'>
+                <img src="{% static 'img/icons/clock-dark.svg' %}" alt="">
+                <div>{{ gen_info_block.0.text }}</div>
+            </div>
+        </div>
+
+        <div class='assignment'>
+            <div class='item'>
+                <div class='title'>Запис онлайн:</div>
+                <a href="{{ altegio_social.link }}" style="width: 100%;" itemprop="url">
+                    <button class='altegio'>
+                        <img src="{{ altegio_social.icon.url }}" alt="altegio_social.title" itemprop="image">
+                        <div>Altegio</div>
+                    </button>
+                </a>
+            </div>
+            <div class='item'>
+                <div class='title'>Або заповніть форму і з вами зв’яжуться:</div>
+                <button class='site-but'>
+                    <img src="{% static 'img/icons/sign-in.svg' %}" alt="">
+                    <div>Записатися</div>
+                </button>
+            </div>
+        </div>
+
+        <div class='socials'>
+            {% for social in socials %}
+                {% if social.title == "mail" %}
+                    <a href="mailto:{{ social.link }}" itemprop="email"><img src="{{ social.icon.url }}" alt="{{ social.title }}"></a>
+                {% elif social.title != "altegio" %}
+                    <a href="{{ social.link }}" itemprop="url"><img src="{{ social.icon.url }}" alt="{{ social.title }}"></a>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <button class="signup-btn-header">
+            <div class="signup-btn-text-header">Записатися</div>
+        </button>
+    </nav>
+</header>

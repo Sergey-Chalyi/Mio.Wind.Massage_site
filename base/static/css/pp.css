@@ -1,0 +1,20 @@
+.main .pp-text {
+    box-sizing: border-box;
+
+    width: 100%;
+    max-width: 1100px;
+
+    color: #000;
+    font-feature-settings: 'liga' off, 'clig' off;
+
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+.main .pp-text div {
+    padding-right: 10px;
+    padding-left: 10px;
+}

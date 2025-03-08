@@ -1,0 +1,17 @@
+{% load static %}
+
+
+<section class="faq" itemscope itemtype="https://schema.org/FAQPage">
+    <h3>Відповіді на поширені запитання</h3>
+    {% for question in questions %}
+        <div class="faq-item" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+            <div class="faq-title">
+                <span itemprop="name">{{ question.title }}</span>
+                <span class="arrow"><img src="{% static 'img/icons/arrow.svg' %}" alt="arrow"></span>
+            </div>
+            <div class="faq-content" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+                <div itemprop="text">{{ question.description|safe }}</div>
+            </div>
+        </div>
+    {% endfor %}
+</section>

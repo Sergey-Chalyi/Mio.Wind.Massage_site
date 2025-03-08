@@ -1,0 +1,20 @@
+{% load static %}
+
+
+<section class='benefits' itemscope itemtype="https://schema.org/CreativeWork">
+    <h3>Наші переваги</h3>
+    <div class='blocks'>
+        <div class='block' itemprop="mainEntity" itemscope itemtype="https://schema.org/Service">
+            <div class='title' itemprop="name">{{ advantages.0.title }}</div>
+            <div class='description' itemprop="description">{{ advantages.0.text }}</div>
+        </div>
+        <div class='block' itemprop="mainEntity" itemscope itemtype="https://schema.org/Service">
+            <div class='title' itemprop="name">{{ advantages.1.title }}</div>
+            <div class='description' itemprop="description">{{ advantages.1.text }}</div>
+        </div>
+        <div class='block' itemprop="mainEntity" itemscope itemtype="https://schema.org/Service">
+            <div class='title' style='color: #165AD4' itemprop="name">{{ advantages.2.title }}</div>
+            <div class='description' itemprop="description">{{ advantages.2.text}}</div>
+        </div>
+    </div>
+</section>

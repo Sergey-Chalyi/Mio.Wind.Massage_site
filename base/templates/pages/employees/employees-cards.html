@@ -1,0 +1,89 @@
+{% load static %}
+{% load extra_filters %}
+
+
+<div class="cards" itemscope itemtype="https://schema.org/ItemList">
+    {% for employee in employees %}
+        <div class="card" itemprop="itemListElement" itemscope itemtype="https://schema.org/Person">
+            <meta itemprop="position" content="{{ forloop.counter }}">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="photo-info">
+                        <div class="info">
+                            <div class="name-special">
+                                <div class="name" itemprop="name">{{ employee.first_name }}</div>
+                                <div class="specialization" itemprop="jobTitle">{{ employee.specialization_short }}</div>
+                            </div>
+                        </div>
+                        <div class="photo">
+                            <img src="{{ employee.card_photo.url }}" alt="{{ employee.first_name }}" itemprop="image">
+                        </div>
+                    </div>
+                    <div class="go-to-profile">
+                        <span class="text">Повернути</span>
+                        <div class="icon">
+                            <img src="{% static 'img/icons/arrow-up.svg' %}" alt="{{ employee.first_name }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <div class='ava-gen-info'>
+                        <div class='ava'>
+                            <img src="{{ employee.ava_photo.url }}" alt="{{ employee.first_name }}" itemprop="image">
+                        </div>
+                        <div class='gen-info'>
+                            <div class='name-netw'>
+                                <div class='name'>{{ employee.first_name }}</div>
+                                <div class='networks'>
+                                    {% if employee.telegram_url %}
+                                        <a href="{{ employee.telegram_url }}" target="_blank" itemprop="sameAs">
+                                            <img src="{% static 'img/icons/socials/tg-dark.svg' %}" alt="Telegram">
+                                        </a>
+                                    {% endif %}
+                                    {% if employee.instagram_url %}
+                                        <a href="{{ employee.instagram_url }}" target="_blank" itemprop="sameAs">
+                                            <img src="{% static 'img/icons/socials/inst-dark.svg' %}" alt="Instagram">
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class='specialization'>
+                                {{ employee.specialization_detailed }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class='description' itemprop="description">
+                        {{ employee.short_description }}
+                    </div>
+                    <div class="reviews">
+                        <div class="stars">
+                            {% for i in employee.stars_count|range_filter  %}
+                                <img class='star' src="{% static 'img/icons/star-light.svg' %}" alt="star">
+                            {% endfor %}
+                            {% for i in employee.stars_count|range_filter_for_dark_stars %}
+                                <img class='star' src="{% static 'img/icons/star-dark.svg' %}" alt="star">
+                            {% endfor %}
+                        </div>
+                        <div class='count'>
+                            {% if employee.altedgio_reviews_url is null %}
+                                <a href="">Відгуки</a>
+                            {% else %}
+                                <a href="{{ employee.altedgio_reviews_url }}" itemprop="review">Відгуки</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class='buttons'>
+                        <a href="{% url 'employee_profile' employee.slug %}">
+                            <button class='profile'>
+                                <div>Переглянути профіль</div>
+                            </button>
+                        </a>
+                        <button class='make-appointment order-button'>
+                            <div>Записатися</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

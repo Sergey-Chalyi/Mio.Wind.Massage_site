@@ -1,0 +1,62 @@
+{% load static %}
+
+<div class='name'>
+    <h3>Сертифікати на послугу</h3>
+    <div class='slogan' itemprop="name">{{ sertificates_page_info.0.phrase_for_servise_sertificate }}</div>
+    <div class='description' itemprop="description">{{ sertificates_page_info.0.description_for_servise_sertificate }}</div>
+</div>
+<div class='info-1' itemscope itemtype="https://schema.org/Service">
+    <img src="{{ sertificates_page_info.0.photo_for_servise_sertificate.url }}" alt="sertificate servise" itemprop="image">
+    <div class='text'>
+        <div class='slogan' itemprop="name">{{ sertificates_page_info.0.phrase_for_servise_sertificate }}</div>
+        <div class='description' itemprop="description">{{ sertificates_page_info.0.description_for_servise_sertificate }}</div>
+        <div class='popular'>
+            <div class='title'>Популярні послуги:</div>
+            <div class='points'>
+                {% for servise in sertificates_page_info.0.popular_servises.all %}
+                    <div class='point'>
+                        <img src="{% static 'img/icons/leaf-green.svg' %}" alt="leaf-icon">
+                        <div class='variant'>{{ servise.title }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <select name="sertificates" id="sertificates" itemprop="additionalType">
+            {% for service in all_services %}
+                <option value="{{ service.title }}">{{ service.title }}</option>
+            {% endfor %}
+        </select>
+        <button class='order-button'>
+            <div>Замовити сертифікат</div>
+        </button>
+    </div>
+</div>
+<div class='name-2'>
+    <h3>Сертифікати на суму</h3>
+    <div class='slogan' itemprop="name">{{ sertificates_page_info.0.phrase_for_sum_sertificate }}</div>
+    <div class='description' itemprop="description">{{ sertificates_page_info.0.description_for_sum_sertificate }}</div>
+</div>
+<div class='info-2'>
+    <div class='for-photo'>
+        <img src="{{ sertificates_page_info.0.photo_for_sum_sertificate.url }}" alt="sertificate sum" itemprop="image">
+    </div>
+    <div class='text'>
+        <div class='slogan' itemprop="name">{{ sertificates_page_info.0.phrase_for_sum_sertificate }}</div>
+        <div class='description' itemprop="description">{{ sertificates_page_info.0.description_for_sum_sertificate }}</div>
+        
+        <div class="options">
+            {% for sertificate in sum_sertificates %}
+                <label>
+                    <input type="radio" name="duration" value="{{ sertificate.price|floatformat:0 }}" {% if forloop.first %}checked{% endif %}>
+                    <div>{{ sertificate.price|floatformat:0 }} грн</div>
+                </label>
+            {% endfor %}
+        </div>
+
+        <div class='clue' itemprop="comment">{{ sertificates_page_info.0.comment_for_sum_sertificate }}</div>
+
+        <button class='order-button'>
+            <div>Замовити сертифікат</div>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,97 @@
+@media (max-width: 1200px) {
+    .main .title-and-nav .links {
+        max-width: 360px;
+    }
+
+    .main .first-info {
+        max-width: 680px;
+
+        gap: 24px;
+
+        font-size: 14px;
+    }
+
+    .main .first-info .photo {
+        width: 328px;
+        height: 500px;
+
+        border-radius: 20px;
+    }
+
+    .main .first-info .items {
+        max-width: 328px;
+
+        gap: 39px;
+    }
+
+    .main .first-info .items .item {
+        gap: 8px;
+    }
+
+    .main .first-info .items .item .info {
+        font-size: 14px;
+    }
+
+    .main .first-info .items .item .big-title {
+        font-size: 18px;
+    }
+
+    .main .first-info .items .item .feedback {
+        font-size: 14px;
+    }
+
+    .main .first-info .items .item .buttons button {
+        display: flex;
+        width: 154px;
+        padding: 14px 10px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        flex: 1 0 0;
+    }
+
+
+    .main .second-info {
+        margin-top: 40px;
+        font-size: 14px;
+    }
+
+    .main .second-info h4 {
+        text-align: center;
+        font-size: 22px;
+    }
+
+    .main .second-info .body {
+        gap: 32px;
+    }
+
+    .main .second-info .body .info {
+        margin-bottom: 0px;
+    }
+}
+
+@media (max-width: 850px) {}
+
+@media (max-width: 750px) {
+    .main .title-and-nav .links {
+        max-width: 360px;
+        margin-left: 5px;
+    }
+
+    .main .first-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: nowrap;
+
+        max-width: 327px;
+        gap: 30px;
+    }
+
+    .main .first-info .items {
+        max-width: 328px;
+
+        gap: 24px;
+    }
+}

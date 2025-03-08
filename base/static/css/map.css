@@ -1,0 +1,81 @@
+.main .map .text {
+    margin: 0;
+    padding: 0;
+
+    margin-top: -50px;
+    margin-left: 7px;
+
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.main .map .max {
+    margin: 0;
+    padding: 0;
+
+    width: 1200px;
+
+    margin-top: 20px;
+
+    display: block;
+}
+
+.main .map .middle {
+    margin: 0;
+    padding: 0;
+
+    width: 680px;
+
+    margin-top: 20px;
+
+    display: none;
+}
+
+.main .map .min {
+    margin: 0;
+    padding: 0;
+
+    width: 370px;
+
+    margin-top: 20px;
+
+    display: none;
+}
+
+.main .map .go-to-more {
+    padding: 14px 10px;
+}
+
+.main .map .buttom-text {
+
+    width: 100%;
+    max-width: 1000px;
+
+    margin-bottom: -90px;
+    margin-top: -30px;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+    color: var(--Fonts-Black, #284159);
+    font-feature-settings: 'liga' off, 'clig' off;
+
+    font-family: "Open Sans";
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+}
+
+.main .map .buttom-text span {
+    color: #165AD4;
+}

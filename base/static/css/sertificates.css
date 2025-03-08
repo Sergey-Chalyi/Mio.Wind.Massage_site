@@ -1,0 +1,77 @@
+.main .abonements {
+    margin-top: -10px;
+}
+
+.main .abonements .body .name h3 {
+    margin-top: -20px;
+}
+
+.main .abonements .body .name .details {
+    margin-bottom: 20px;
+}
+
+.main .sertificates {
+    margin-top: -90px;
+    margin-bottom: -100px;
+}
+
+
+
+.main .go-to-map {
+    margin-top: 130px;
+
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    color: var(--Fonts-Black, #284159);
+    font-feature-settings: 'liga' off, 'clig' off;
+
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+.main .go-to-map .text {
+    width: 100%;
+    max-width: 714px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+}
+
+.main .go-to-map .text .title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 130%;
+}
+
+.main .go-to-map .text .description {
+    text-align: left;
+}
+
+.main .go-to-map button {
+    display: flex;
+    width: 328px;
+    padding: 14px 25px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    border-radius: 10px;
+    background: var(--Blue, #165AD4);
+}
+
+.main .go-to-map button div {
+    padding: 0px;
+    margin: 0px;
+    color: var(--White, #FFF);
+}

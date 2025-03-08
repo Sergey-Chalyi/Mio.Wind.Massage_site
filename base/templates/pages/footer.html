@@ -1,0 +1,47 @@
+{% load static %}
+
+
+<footer class='footer'>
+    <div class='main'>
+        <div class='logo'>
+            <a href="{% url 'homepage' %}" itemprop="url">
+                <img src="{{ logo.0.icon_main.url }}" alt="logo" itemprop="logo">
+                <div itemprop="name">{{ logo.0.text }}</div>
+            </a>
+        </div>
+        <div class='nav'>
+            <div class='title'>Швидка навігація:</div>
+            <div class='item'><a href="{% url 'page_servises' %}" itemprop="url">Послуги</a></div>
+            <div class='item'><a href="{% url 'page_employees' %}" itemprop="url">Спеціалісти</a></div>
+            <div class='item'><a href="{% url 'page_subscriptions_and_sertificates' %}" itemprop="url">Абонементи та сертифікати</a></div>
+            <div class='item'><a href="{% url 'page_map' %}" itemprop="url">Дорожня карта</a></div>
+        </div>
+        <div class='socials'>
+            <div>Слідкуйте за нами:</div>
+            <div class='icons'>
+                {% for social in socials %}
+                    {% if social.title == "mail" %}
+                        <a href="mailto:{{ social.link }}" itemprop="sameAs"><img src="{{ social.icon.url }}" alt="{{ social.title }}"></a>
+                    {% elif social.title != "altegio" %}
+                        <a href="{{ social.link }}" itemprop="sameAs"><img src="{{ social.icon.url }}" alt="{{ social.title }}"></a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class='pp'>
+            <div class='text'><a href="{% url 'page_pp' %}" itemprop="url">Політика конфіденційності</a></div>
+        </div>
+    </div>
+    <hr class='separate-line'>
+    <div class='bottom'>
+        <div class='pp'><a href="{% url 'page_pp' %}" itemprop="url">Політика конфіденційності</a></div>
+        <div class='info'>
+            <div>{{ rights.0.title }}</div>
+            <div class='devs'>
+                <div>Design by: <a href="https://linktr.ee/nikolay_dkj" itemprop="creator">Dykyi Nikolay</a></div>
+                <hr width="0.5" size="10">
+                <div>Develop by: <a href="https://linktr.ee/sergey_chalyi" itemprop="creator">Serhii Chalyi</a></div>
+            </div>
+        </div>
+    </div>
+</footer>

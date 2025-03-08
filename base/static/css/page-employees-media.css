@@ -1,0 +1,24 @@
+@media (max-width: 1200px) {
+    .main .specialists .bottom-description {
+        width: auto;
+        gap: 16px;
+        font-size: 14px;
+    }
+
+    .main .specialists .bottom-description .title {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 850px) {
+    .main .specialists .card:nth-child(n+3) {
+        display: block;
+    }
+
+    .main .specialists .bottom-description {
+        margin-right: 15px;
+        margin-left: 15px;
+        width: 100%;
+        max-width: 360px;
+    }
+}

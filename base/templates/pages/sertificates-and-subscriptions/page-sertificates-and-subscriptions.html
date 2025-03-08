@@ -1,0 +1,99 @@
+{% load static %}
+{% load extra_filters %}
+
+
+<!DOCTYPE html>
+<html lang="uk" itemscope itemtype="http://schema.org/HTML">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Абонементи та сертифікати</title>
+
+    <link type="image/x-icon" href="{{ logo.0.icon_flavic.url }}" rel="shortcut icon">
+    <link type="Image/x-icon" href="{{ logo.0.icon_flavic.url }}" rel="icon">
+
+    <link type='text/css' rel="stylesheet" href="{% static 'css/homepage.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/homepage-media.css' %}">
+
+    <link type='text/css' rel="stylesheet" href="{% static 'css/welcome-block.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/welcome-block-media.css' %}">
+
+    <link type='text/css' rel="stylesheet" href="{% static 'css/title-and-nav.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/title-and-nav-media.css' %}">
+
+    <link type='text/css' rel="stylesheet" href="{% static 'css/sertificates.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/sertificates-media.css' %}">
+
+    <link type='text/css' rel="stylesheet" href="{% static 'css/new-form.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/new-form-media.css' %}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.cdnfonts.com/css/atten-new" rel="stylesheet">
+                
+</head>
+<body itemscope itemtype="http://schema.org/WebPage">
+
+    {% include "pages/header.html" %}
+
+    <main class='main' itemprop="mainContentOfPage">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TKHNSMHK"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        
+        {% include "pages/welcome-block.html" with welcome_message=page_photo.title welcome_image=page_photo.photo.url %}
+
+        {% include "pages/nav-and-title.html" with current_page_name="Абонементи та сертифікати" current_page_url_name="page_subscriptions_and_sertificates" title='' %}
+
+        <section class='abonements' itemscope itemtype="http://schema.org/Article">
+            <img class='background-normal' src="{{ subscription_page_info.1.photo.url }}" alt="wave-normal">
+            <div class='body'>
+                <div class='name'>
+                    <h3 itemprop="headline">Абонементи</h3>
+                    <div class='details' itemprop="text">{{ subscription_page_info.0.text }}</div>
+                </div>
+                
+                {% include "pages/sertificates-and-subscriptions/subscriptions-block.html" %}
+                
+            </div>
+        </section>
+
+        <section class='sertificates' itemscope itemtype="http://schema.org/Article">
+            <img class='background' src="{{ sertificates_page_info.0.background.url }}" alt="wave-blue">
+        
+            <div class='body'>
+                {% include "pages/sertificates-and-subscriptions/sertificates-block.html" %}
+            </div>
+
+        </section>
+
+        <div class='go-to-map' itemscope itemtype="http://schema.org/Thing">
+            <div class='text'>
+                <div class='title' itemprop="name">
+                    Абонемент – це ваша <span style='color: #165AD4'>Дорожня карта</span> до здоров’я та гармонії.
+                </div>
+                <div class='description' itemprop="description">
+                    Відкрийте карту та розпочніть свій шлях до оновлення вже сьогодні!
+                </div>
+            </div>
+            <a href="{% url 'page_map' %}">
+                <button>
+                    <div>Ваш шлях до здоров’я</div>
+                </button>
+            </a>
+        </div>
+
+        <section id="window-form" itemscope itemtype="http://schema.org/Form">
+            {% include "pages/new-form.html" with form_type="window"%}
+        </section>
+
+    </main>
+    
+    {% include "pages/footer.html" %}
+
+    <script src="{% static 'js/window-form.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+@media (max-width: 1200px) {
+    main .welcome .info {
+        margin-bottom: -80px;
+    }
+
+    main .welcome img {
+        margin-top: 180px;
+    }
+}
+
+@media (max-width: 850px) {
+    main .welcome .info {
+        margin-bottom: -100px;
+        font-size: 28px;
+    }
+
+    main .welcome img {
+        height: 200px;
+    }
+}

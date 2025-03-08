@@ -1,0 +1,34 @@
+@media (max-width: 1200px) {
+    .main .services .card:nth-child(n+7) {
+        display: block;
+    }
+
+    .main .services .botton-description {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+
+        font-size: 14px;
+    }
+
+    .main .services .botton-description button {
+        width: 328px;
+    }
+
+    .main .services .botton-description button div {
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width: 850px) {
+    .main .services .card:nth-child(n+3) {
+        display: block;
+    }
+
+    .main .services .botton-description .text {
+        max-width: 350px;
+    }
+}

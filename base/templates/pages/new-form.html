@@ -1,0 +1,155 @@
+{% load static %}
+
+<section class='new-form' style='
+    {% if form_type == "new-window" %}
+        
+    {% elif form_type == "homepage" %}
+        margin-top: 50px;
+    {% elif form_type == "employee" %}
+        margin-top: 50px;
+    {% endif %}
+    '>
+    <div class='out-block' style='padding-right: 10px; padding-left: 10px;'>
+        <div class='block' style='
+        {% if form_type == "new-window" %}
+            background-color: white;
+            
+        {% elif form_type == "homepage" %}
+            background-color: #165AD4;
+            color: white;
+
+        {% elif form_type == "employee" %}
+            background-color: #E8EFFB
+        {% endif %}
+        '>
+            <div class='head'>
+                {% if form_type == "employee" %}
+                <h3>Записатись до спеціаліста</h3>
+                {% else %}
+                <h3>Записатись на сеанс</h3>
+                {% endif %}
+                <img src="{% static 'img/icons/x.svg' %}" alt="close_button" class="close-button" style='
+                {% if form_type == "window" %}
+                    display: block;
+                    cursor: pointer;
+                {% else %}
+                    display: none;
+                {% endif %}
+                '>
+            </div>
+
+            <div class='body'>
+                <div class='info'>
+                    <div class='details'>
+                        <div class='first-info'>
+                            <p style='
+                            {% if form_type != "homepage" %}
+                                display: none;
+                            {% endif %}
+                            '>
+                            Не знаєте, який масаж обрати? Залиште заявку, і ми допоможемо підібрати ідеальний варіант!
+                            </p>
+                            <p>Записавшись, ви надаєте згоду з правилами запису згідно <a href="{% url "page_pp" %}" style='
+                                {% if form_type == "homepage" %}
+                                    color: white;
+                                {% endif %}
+                                '><u>Політики конфіденційності</u></a>.</p>
+                        </div>
+                        <div class='clarifications'>
+                            <div class='item'>
+                                {% if form_type == "homepage" %}
+                                <img src="{% static "img/icons/phone-white.svg" %}" alt="phone-icon">
+                                {% else %}
+                                <img src="{% static "img/icons/phone-dark.svg" %}" alt="phone-icon">
+                                {% endif %}
+                                
+                                <div class='text'>+38 (068) 348-81-03</div>
+                            </div>
+                            <div class='item'>
+                                {% if form_type == "homepage" %}
+                                <img src="{% static "img/icons/clock-white.svg" %}" alt="phone-icon">
+                                {% else %}
+                                <img src="{% static "img/icons/clock-dark.svg" %}" alt="phone-icon">
+                                {% endif %}
+                                <div class='text'>з 8:00 до 22:00</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='assignment' style='
+                    {% if form_type != "homepage" %}
+                        margin-top: 70px;
+                        color: #284159
+                    {% else %}
+                        margin-top: 20px;
+                    {% endif %}
+                    '>
+                        <div>Запис онлайн:</div>
+                        {% if form_type == "employee" %}
+                        <a href="{{ employee.altedgio_booking_url }}">
+                        {% else %}
+                        <a href="{{ altegio_social.link }}">
+                        {% endif %}
+                            <button style='
+                            {% if form_type != "homepage" %}
+                                background-color: #C9D9F5
+                            {% endif %}
+                            '>
+                                <img src="{{ altegio_social.icon.url }}" alt="altegio-logo">
+                                <div style='color: #284159'>Altegio</div>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class='blank'>
+                    <div>Залишити заявку:</div>
+
+                    <form action="" method="post">
+                        {% csrf_token %}
+
+                        <div class='name-tel'>
+                            <div class='item'>
+                                <img src="{% static 'img/icons/person-blue.svg' %}" alt="person-icon">
+
+                                {{ form.customer_name }}
+                            </div>
+                            <div class='item'>
+                                <img src="{% static 'img/icons/phone-dark.svg' %}" alt="person-icon">
+                                {{ form.customer_tel }}
+                            </div>
+                        </div>
+                        <div class='comment'>
+                            {{ form.customer_comment }}
+                        </div>
+                        {{ form.to_specialist }}
+                    
+                        <button  style='
+                        {% if form_type == "homepage" %}
+                            background-color: black;
+                        {% endif %}
+                        '><div>Відправити</div></button>
+                    </form>
+                    <div class='hidden'>
+                        <div class='text'>Або записатися онлайн:</div>
+                        {% if form_type == "employee" %}
+                        <a href="{{ employee.altedgio_booking_url }}">
+                        {% else %}
+                        <a href="{{ altegio_social.link }}">
+                        {% endif %}
+                            <button style='color: #284159'>
+                                <img src="{{ altegio_social.icon.url }}" alt="altegio-logo">
+                                <div>Altegio</div>
+                            </button>
+                        </a>
+                        <div class='details'>
+                            <p>Записавшись, ви надаєте згоду з правилами запису згідно <a href="{% url "page_pp" %}" style='
+                                {% if form_type == "homepage" %}
+                                    color: white;
+                                {% endif %}
+                                '><u>Політики конфіденційності</u></a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

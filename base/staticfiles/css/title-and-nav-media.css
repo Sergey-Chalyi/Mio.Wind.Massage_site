@@ -1,0 +1,22 @@
+@media (max-width: 1200px) {
+    .main .title-and-nav .links {
+        max-width: 300px;
+
+        justify-content: center;
+
+        font-size: 16px;
+    }
+
+    .main .title-and-nav h2 {
+        font-size: 28px;
+        max-width: 300px;
+
+        margin-bottom: 40px;
+
+        text-align: center;
+    }
+
+    .main .title-and-nav h2 span {
+        font-size: 18px;
+    }
+}

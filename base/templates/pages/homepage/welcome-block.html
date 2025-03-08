@@ -1,0 +1,18 @@
+{% load static %}
+
+
+<section class="welcome" itemscope itemtype="https://schema.org/CreativeWork">
+    <div class='info'>
+        <div class="name-and-slogan">
+            <h1 class='name' itemprop="headline">{{ welcome_block.0.text }}</h1>
+            <h3 class='slogan' itemprop="description">{{ welcome_block.1.text }}</h3>
+        </div>
+        <div class='discount-and-butt'>
+            <h5 class="discount" itemprop="text">{{ welcome_block.2.text }}</h5>
+            <button class='order-button'>
+                <div class='text'>Записатися на сеанс</div>
+            </button>
+        </div>
+    </div>
+    <img src="{{ welcome_block.3.photo.url }}" alt="Welcome" itemprop="image">
+</section>

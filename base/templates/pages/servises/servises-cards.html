@@ -1,0 +1,62 @@
+{% load static %}
+
+
+<div class='cards' itemscope itemtype="https://schema.org/ItemList">
+    {% for service in services_show_on_homepage %}
+        <div class="card" itemprop="itemListElement" itemscope itemtype="https://schema.org/Product">
+            <meta itemprop="position" content="{{ forloop.counter }}">
+            <div class="photo-and-title">
+                <div class="title" itemprop="name">{{ service.title }}</div>
+                <div class="photo">
+                    <img src="{{ service.image.url }}" alt="{{ service.title }}" itemprop="image">
+                </div>
+            </div>
+            <div class="info" itemprop="description">
+                <div class="intro">
+                    {{ service.short_description }}
+                </div>
+                <div class="includs">
+                    <div class='title'>
+                        <div class="icon">
+                            <img src="{% static 'img/icons/leaf-green.svg' %}" alt="">
+                        </div>
+                        <div class="text">
+                            До сеансу входить:
+                        </div>
+                    </div>
+                    <div class='info'>
+                        <div id="body_parts_{{ service.id }}" itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+                            <span itemprop="value">{{ service.options.0.body_parts }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="duration">
+                    <div class='title'>
+                        <div class="icon">
+                            <img src="{% static 'img/icons/flower-green.svg' %}" alt="">
+                        </div>
+                        <div class="text">
+                            Тривалість сеансу:
+                        </div>
+                    </div>
+                    <div class='options'>
+                        {% for option in service.options %}
+                            <label width='calc(100% / 3)' itemscope itemtype="https://schema.org/Offer">
+                                <input type="radio" name="duration_{{ service.id }}" value="{{ option.duration }}" data-parts="{{ option.body_parts }}" data-price="{{ option.price }}" {% if forloop.first %}checked="checked"{% endif %}>
+                                <div itemprop="duration">{{ option.duration }}</div>
+                            </label>
+                        {% endfor %}
+                    </div>                    
+                </div>
+                <div class="price">
+                    <div id="price_{{ service.id }}" class='sum' itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                        <span itemprop="price">{{ service.options.0.price }}</span> грн
+                    </div>
+                    <button class="order-button">
+                        <div>Замовити</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

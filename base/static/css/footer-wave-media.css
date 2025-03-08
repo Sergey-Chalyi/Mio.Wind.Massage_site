@@ -1,0 +1,23 @@
+@media (max-width: 1293px) {
+    .footer .footer-background {
+        height: 560px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .footer .footer-background {
+        height: 620px;
+    }
+}
+
+@media (max-width: 849px) {
+    .footer .footer-background {
+        height: 650px;
+    }
+}
+
+@media (max-width: 380px) {
+    .footer .footer-background {
+        height: 670px;
+    }
+}

@@ -1,0 +1,11 @@
+{% load static %}
+
+<section class='title-and-nav' itemscope itemtype="http://schema.org/WebPage">
+    <div class='links'>
+        <a href="{% url 'homepage' %}" itemprop="url" itemtype="http://schema.org/Organization">MIO.WIND.MASSAGE</a>
+        <img src="{% static 'img/icons/arrow.svg' %}" alt="">
+        <a href="{% url current_page_url_name %}" itemprop="url">{{ current_page_name }}</a>
+    </div>
+    
+    <h2 itemprop="headline">{{ title }}</h2>
+</section>

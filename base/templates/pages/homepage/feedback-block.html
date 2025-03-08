@@ -1,0 +1,33 @@
+{% load static %}
+{% load extra_filters %}
+
+
+
+<section class='feedback'>
+    <h3>Відгуки</h3>
+    <div class='cards'>
+        {% for feedback in feedbacks %}
+            <div class='card' itemscope itemtype="https://schema.org/Review">
+                <div class='head'>
+                    <div class='ava'>
+                        <img src="{{ feedback.specialist.ava_photo.url }}" alt="specialist" style="width: 80px;" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                        <meta itemprop="name" content="{{ feedback.specialist.first_name }}">
+                    </div>
+                    <div class='info'>
+                        <h5 class='name' itemprop="author">{{ feedback.specialist.first_name }}</h5>
+                        <div class='stars'>
+                            {% for i in feedback.stars_count|range_filter  %}
+                                <img class='star' src="{% static 'img/icons/star-light.svg' %}" alt="star">
+                            {% endfor %}
+                            {% for i in  feedback.stars_count|range_filter_for_dark_stars  %}
+                                <img class='star' src="{% static 'img/icons/star-dark.svg' %}" alt="star">
+                            {% endfor %}
+                        </div>
+                        <div class='date' itemprop="datePublished">{{ feedback.date }}</div>
+                    </div>
+                </div>
+                <div class='body' itemprop="reviewBody">{{ feedback.text }}</div>
+            </div>
+        {% endfor %}
+    </div>
+</section>

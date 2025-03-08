@@ -1,0 +1,20 @@
+{% load static %}
+
+
+<section class='gen-info' itemscope itemtype="https://schema.org/Organization">
+    {% for info in gen_info_block %}
+        <div class="info-block" itemprop="department" itemscope itemtype="https://schema.org/Organization">
+            <div class="icon">
+                <img src="{{ info.icon.url }}" alt="" itemprop="logo">
+            </div>
+            <div class="text">
+                <div class="title" itemprop="name">
+                    {{ info.title }}
+                </div>
+                <div class="description" itemprop="description">
+                    {{ info.text }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</section>

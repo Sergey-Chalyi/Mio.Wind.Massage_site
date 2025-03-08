@@ -1,0 +1,78 @@
+{% load static %}
+{% load extra_filters %}
+
+
+<!DOCTYPE html>
+<html lang="uk" itemscope itemtype="http://schema.org/HTML">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спеціалісти</title>
+
+    <link type="image/x-icon" href="{{ logo.0.icon_flavic.url }}" rel="shortcut icon">
+    <link type="Image/x-icon" href="{{ logo.0.icon_flavic.url }}" rel="icon">
+
+    <link type='text/css' rel="stylesheet" href="{% static 'css/homepage.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/homepage-media.css' %}">
+
+    <link type='text/css' rel="stylesheet" href="{% static 'css/welcome-block.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/welcome-block-media.css' %}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/atten-new" rel="stylesheet">
+
+    <link type='text/css' rel="stylesheet" href="{% static 'css/title-and-nav.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/title-and-nav-media.css' %}">
+
+    <link type='text/css' rel="stylesheet" href="{% static 'css/page-employees.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/page-employees-media.css' %}">
+
+    <link type='text/css' rel="stylesheet" href="{% static 'css/new-form.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/new-form-media.css' %}">
+
+    <link type='text/css' rel="stylesheet" href="{% static 'css/footer-wave.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/footer-wave-media.css' %}">
+
+</head>
+<body itemscope itemtype="http://schema.org/WebPage">
+
+    {% include "pages/header.html" %}
+
+    <main class='main' itemprop="mainContentOfPage">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TKHNSMHK"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        
+        {% include "pages/welcome-block.html" with welcome_message=page_photo.title welcome_image=page_photo.photo.url %}
+
+        {% include "pages/nav-and-title.html" with current_page_name="Спеціалісти" current_page_url_name="page_employees" title='Спеціалісти' %}
+
+        <section class='specialists' itemprop="specialty" itemscope itemtype="http://schema.org/Organization">
+            {% include "pages/employees/employees-cards.html" %}
+
+            <div class='bottom-description'>
+                <div class='title'>
+                    <img src="{% static 'img/icons/leaf-dark.svg' %}" alt="leaf-dark" itemprop="image">
+                    <span itemprop="name">{{ employees_page_info.1.title }}</span>
+                </div>
+                <div class='text' itemprop="description">{{ employees_page_info.1.text|safe }}</div>
+            </div>
+        </section>
+
+        <section id="window-form" itemprop="form" itemscope itemtype="http://schema.org/Form">
+            {% include "pages/new-form.html" with form_type="window"%}
+        </section>
+
+    </main>
+
+    {% include "pages/footer-wave.html" %}
+
+    <script src="{% static 'js/homepage.js' %}"></script>
+    <script src="{% static 'js/window-form.js' %}"></script>
+
+</body>
+</html>
+

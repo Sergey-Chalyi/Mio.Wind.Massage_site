@@ -1,0 +1,17 @@
+{% load static %}
+
+
+<section class="advantages" itemscope itemtype="https://schema.org/ItemList">
+    {% for benefit in general_benefits %}
+        <div class='block' itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <meta itemprop="position" content="{{ forloop.counter }}">
+            <div class='icon'>
+                <img src="{{ benefit.icon.url }}" alt="" itemprop="image">
+            </div>
+            <div class='info'>
+                <div class="title" itemprop="name">{{ benefit.title }}</div>
+                <div class="description" itemprop="description">{{ benefit.text }}</div>
+            </div>
+        </div>
+    {% endfor %}
+</section>

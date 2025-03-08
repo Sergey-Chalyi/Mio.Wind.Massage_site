@@ -1,0 +1,60 @@
+{% load static %}
+
+
+<div class='cards' itemscope itemtype="https://schema.org/CreativeWork">
+    {% for subscription in django_subscriptions %}
+        <div class='card' style="margin-left: 2px;margin-right: 2px;" itemscope itemtype="https://schema.org/Service">
+            <div class='top'>
+                <img class='main-img' src="{{ subscription.photo.url }}" alt="{{ subscription.name }}" itemprop="image">
+                <img class='short-img' src="{{ subscription.photo_short.url }}" alt="{{ subscription.name }}" itemprop="image">
+
+                <div class='title' itemprop="name">{{ subscription.name }}</div>
+            </div>
+            <div class='bottom'>
+                <div class='text' itemprop="description">
+                    {{ subscription.phrase }}
+                </div>
+                <div class='characteristics'>
+                    <div class='duration'>
+                        <div class='title'>
+                            <img src="{% static 'img/icons/flower-green.svg' %}" alt="">
+                            <div class='text'>Тривалість сеансу:</div>
+                        </div>
+                        <div class='options'>
+                            {% for minutes in subscription.durations %}
+                                <label>
+                                    <input type="radio" name="duration_{{ subscription.id }}" value="{{ minutes }}" {% if forloop.first %}checked="checked"{% endif %}>
+                                    <div>{{ minutes }} хв</div>
+                                </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class='count'>
+                        <div class='title'>
+                            <img src="{% static 'img/icons/leaf-green.svg' %}" alt="leaf">
+                            <div class='text'>Кількість сеансів:</div>
+                        </div>
+                        <select name="sessions" id="sessions" itemprop="numberOfServings">
+                            {% for count in subscription.counts %}
+                                <option value="{{ count }}">{{ count }}x</option>
+                            {% endfor %}
+                        </select>
+                    </div>                
+                </div>
+                <div class='money'>
+                    <div class='price-info'>
+                        <a href="{{ subscription_page_info.2.text }}">
+                            <button class='' style='display: flex; gap: 10px; width: 280px; background-color: #C7CACE;' itemprop="url">
+                                <img src="{% static 'img/icons/socials/altegio.png' %}" alt="" width='24px' height='24px'>
+                                <div style='color: black'>Дізнатися ціни</div>
+                            </button>
+                        </a>
+                    </div>
+                    <button class='subscription-button'>
+                        <div>Замовити</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

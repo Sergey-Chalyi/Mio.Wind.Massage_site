@@ -1,0 +1,52 @@
+.main .specialists .cards {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+
+.main .specialists .bottom-description {
+    margin-top: 80px;
+    margin-bottom: -100px;
+
+    width: 100%;
+    max-width: 1050px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+
+    color: var(--Fonts-Black, #284159);
+    font-feature-settings: 'liga' off, 'clig' off;
+
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+.main .specialists .bottom-description .title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 130%;
+}
+
+.main .specialists .bottom-description .title img {
+    width: 24px;
+    height: 24px;
+}
+
+.main .specialists .bottom-description .text {
+    width: 100%;
+    max-width: 684px;
+}
